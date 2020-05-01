@@ -1,0 +1,45 @@
+package com.example.android.musicplayer;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+public class Library extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.song_list);
+
+        final ArrayList<Song> songs = new ArrayList<Song>();
+        songs.add(new Song("song name 1", "duration 1", "genre 1", R.raw.z1));
+        songs.add(new Song("song name 2", "duration 2", "genre 2", R.raw.z2));
+        songs.add(new Song("song name 3", "duration 3", "genre 3", R.raw.z3));
+        songs.add(new Song("song name 4", "duration 4", "genre 4", R.raw.z4));
+        songs.add(new Song("song name 5", "duration 5", "genre 5", R.raw.z5));
+        SongAdapter adapter = new SongAdapter(this, songs);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Song theSong = songs.get(position);
+
+                MediaPlayer mp = MediaPlayer.create( getApplicationContext(), theSong.getSongResourceId());
+                mp.start();
+                Intent nowPlayingIntent = new Intent(Library.this, MainActivity.class);
+                startActivity(nowPlayingIntent);
+            }
+        });
+
+    }
+}
