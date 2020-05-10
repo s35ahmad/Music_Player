@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/song_name_text_view"
+            style="@style/button_style"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/duration_text_view"
+            style="@style/button_style"
+            tools:text="Duration" />
+
+        <TextView
+            android:id="@+id/genre_text_view"
+            style="@style/button_style"
+            tools:text="Genre" />
+    </LinearLayout>
+</LinearLayout>
